@@ -1,38 +1,141 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mainApp, .landingPageMain{
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  position: relative;
+}
+
+.mainApp{
+  background-color: black;
+}
+
+.videoDisplay{
+  display: none;
+}
+
+
+.appMainDisplay{
+  height: 100%;
+  width: 30%;
+  overflow: hidden;
+
+}
+
+.canvasDisplay{
+  height: 100%;
+  width: 100%;
+}
+
+.mirrorCam
+{
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg);
+    -moz-transform:rotateY(180deg);
+    
+}
+
+
+h1{
+  color: #3aa0f1;
+}
+
+.btnGroup{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.optionsBtn{
+  background-color: #3aa0f1;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-size:medium;
   color: white;
+  padding: 25px 35px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.App-link {
-  color: #61dafb;
+.optionsBtn:hover{
+  background-color: #2376c8;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cameraOptions{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.stopIcon{
+  width: 30px;
+  height: 30px;
+  color: crimson;
+  transition: .5s;
+}
+
+.stopIcon:hover,
+.mirrorIcon:hover,
+.toggleCameraIcon:hover{
+  width: 35px;
+  height: 35px;
+}
+
+.clickImage{
+  position: absolute;
+  bottom: 30px;
+  background-color: transparent;
+  border: 5px solid white;
+  border-radius: 10px;
+}
+
+.clickMirror{
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background-color: transparent;
+  border: 5px solid white;
+  border-radius: 10px;
+
+}
+
+.mirrorIcon{
+  color: #2376c8;
+  width: 30px;
+  height: 30px;
+  transition: .5s;
+}
+
+.toggleCamera{
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background-color: transparent;
+  border: 5px solid white;
+  border-radius: 10px;
+}
+
+.toggleCameraIcon{
+  color: #2376c8;
+  width: 30px;
+  height: 30px;
+  transition: .5s;
+}
+
+.imageTaken{
+  height: 100%;
+  width: 100%;
+}
+
+.mirroredImageTaken{
+  transform: rotateY(180deg);
+  -webkit-transform:rotateY(180deg);
+  -moz-transform:rotateY(180deg);
+
 }
