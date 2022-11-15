@@ -89,6 +89,9 @@ const Camera: FC<ImageCapturerProps> = ({ imageDimensions }) => {
                 : imageDimensions === "3:4"
                 ? "80%"
                 : "60%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <img className="imageTaken" src={url} alt="imageTaken" />
