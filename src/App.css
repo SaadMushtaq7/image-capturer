@@ -12,21 +12,16 @@
   background-color: black;
 }
 
-.videoDisplay{
-  display: none;
-}
-
-
 .appMainDisplay{
-  height: 100%;
-  width: 30%;
-  overflow: hidden;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .canvasDisplay{
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  z-index: 9;
+
 }
 
 .mirrorCam
@@ -61,7 +56,7 @@ h1{
   transition: 0.2s;
 }
 
-.optionsBtn:hover{
+.optionsBtn:hover,.downloadBtn:hover{
   background-color: #2376c8;
 }
 
@@ -69,8 +64,11 @@ h1{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  position: relative;
+  align-items: center;
+  position: absolute;
   width: 100%;
+  height: 100%;
+  z-index: 10;
 }
 
 .stopIcon{
@@ -93,6 +91,7 @@ h1{
   background-color: transparent;
   border: 5px solid white;
   border-radius: 10px;
+  z-index: 11;
 }
 
 .clickMirror{
@@ -102,6 +101,7 @@ h1{
   background-color: transparent;
   border: 5px solid white;
   border-radius: 10px;
+  z-index: 11;
 
 }
 
@@ -119,6 +119,7 @@ h1{
   background-color: transparent;
   border: 5px solid white;
   border-radius: 10px;
+  z-index: 11;
 }
 
 .toggleCameraIcon{
@@ -137,5 +138,17 @@ h1{
   transform: rotateY(180deg);
   -webkit-transform:rotateY(180deg);
   -moz-transform:rotateY(180deg);
+
+}
+
+.downloadBtn{
+ position: absolute;
+ bottom: 10px;
+ background-color: #3aa0f1;
+ padding: 20px 30px;
+ border-radius: 10px;
+ color: white;
+ text-decoration: none;
+ transition: 0.5s;
 
 }

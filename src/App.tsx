@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./App.css";
-import ImageCapturer from "./components/ImageCapturer";
 import LandingPage from "./components/LandingPage";
+import Camera from "./components/practice/Camera";
+import "./App.css";
 
 const App = () => {
   const [imageDimensions, setImageDimensions] = useState<
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       {imageDimensions ? (
-        <ImageCapturer imageDimensions={imageDimensions} />
+        <Camera imageDimensions={imageDimensions} />
       ) : (
         <LandingPage setImageDimensions={setImageDimensions} />
       )}

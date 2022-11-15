@@ -50,6 +50,9 @@ const ImageCapturer: FC<ImageCapturerProps> = ({ imageDimensions }) => {
       );
     let imageDataUrl = canvasRef.current.toDataURL("image/jpeg");
     setImageUrl(imageDataUrl);
+    inputVideoRef.current.srcObject.getTracks().forEach((track: any) => {
+      track.stop();
+    });
   };
 
   const draw = (video: any, context: any) => {
@@ -66,7 +69,10 @@ const ImageCapturer: FC<ImageCapturerProps> = ({ imageDimensions }) => {
     contextRef.current = canvasRef.current.getContext("2d");
 
     navigator.mediaDevices
-      .getUserMedia({ video: { deviceId }, audio: false })
+      .getUserMedia({
+        video: { deviceId, height: 1200, width: 600 },
+        audio: false,
+      })
       .then(async (stream) => {
         inputVideoRef.current.srcObject = stream;
         await inputVideoRef.current.play();
@@ -78,23 +84,34 @@ const ImageCapturer: FC<ImageCapturerProps> = ({ imageDimensions }) => {
 
     getVideoDevices();
   }, [deviceId, getVideoDevices]);
+
   return (
     <div className="mainApp">
       {imageUrl ? (
-        <img
-          className={
-            mirrorCheck ? "imageTaken mirroredImageTaken" : "imageTaken"
-          }
-          src={imageUrl}
-          alt="imageTaken"
-        />
+        <>
+          <img
+            className={
+              mirrorCheck ? "imageTaken mirroredImageTaken" : "imageTaken"
+            }
+            src={imageUrl}
+            alt="imageTaken"
+          />
+          <a className="downloadBtn" download={true} href={imageUrl}>
+            Download
+          </a>
+        </>
       ) : (
         <>
-          <video
-            className={mirrorCheck ? "videoDisplay mirrorCam" : "videoDisplay"}
-            ref={inputVideoRef}
-          />
-          <div className="appMainDisplay">
+          <div
+            style={{ height: "1200px", width: "500px" }}
+            className="appMainDisplay"
+          >
+            <video
+              className={
+                mirrorCheck ? "videoDisplay mirrorCam" : "videoDisplay"
+              }
+              ref={inputVideoRef}
+            />
             <canvas
               className={
                 mirrorCheck ? "canvasDisplay mirrorCam" : "canvasDisplay"
@@ -111,7 +128,7 @@ const ImageCapturer: FC<ImageCapturerProps> = ({ imageDimensions }) => {
               >
                 <GoMirror className="mirrorIcon" />
               </button>
-              {isMobile && (
+              {isMobile && videoDevices > 1 && (
                 <button className="toggleCamera" onClick={toggleCamera}>
                   <TiArrowRepeat className="toggleCameraIcon" />
                 </button>
